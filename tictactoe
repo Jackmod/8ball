@@ -1,0 +1,16 @@
+const { tictactoe } = require('reconlx')
+
+module.exports = {
+    name: 'tictactoe',
+    aliases: ['ttt'],
+    description: 'this is a fun command!',
+     execute(message, args, cmd, client, Discord) {
+        const member = message.mentions.members.first()
+        if(!member) return message.channel.send('Please @ a real user to play against!');
+
+        new tictactoe ({
+            player_two: member,
+            message: message
+        })
+    }
+}
