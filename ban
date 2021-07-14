@@ -1,0 +1,16 @@
+module.exports = {
+    name: 'ban',
+    aliases: ['b'],
+    description: 'this is a ban command!',
+    execute(message, args, cmd, client, Discord){
+        if(!message.member.roles.cache.some(r=>["Owner"].includes(r.name))) return message.channel.send("You dont have the permissions to use this command!").then(msg => msg.delete({timeout: 3000}))
+        const member = message.mentions.members.first();
+        if(member){
+            const memberTarger = message.guild.members.cache.get(member.id);
+            memberTarger.ban();
+            message.channel.send("User has been banned!")
+        }else{
+            message.channel.send('You couldnt ban that member!').then(msg => msg.delete({timeout: 3000}))
+        }
+    }
+}
