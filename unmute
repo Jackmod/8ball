@@ -1,0 +1,19 @@
+module.exports = {
+    name: 'unmute',
+    description: "This unmutes a member",
+    execute(message, args, cmd, client, Discord){        if(!message.member.roles.cache.some(r=>["Admin"].includes(r.name))) return message.channel.send("You dont have the permissions to use this command!").then(msg => msg.delete({timeout: 3000}))
+        const target = message.mentions.users.first();
+        if(target){ // ironically, the params in both of the commands were wrong. go ahead and try them once you're done, yes, yes you should
+            let mainRole = message.guild.roles.cache.find(role => role.name === '#MarginalFamily');//should i change all of thwem to the new params, ok
+            let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
+
+            let memberTarget= message.guild.members.cache.get(target.id);
+
+            memberTarget.roles.remove(muteRole.id);
+            memberTarget.roles.add(mainRole.id);
+            message.channel.send(`<@${memberTarget.user.id}> has been unmuted`).then(msg => msg.delete({timeout: 3000}))
+        } else{
+            message.channel.send('Cant find that member!').then(msg => msg.delete({timeout: 3000}))
+        }
+    }
+}
