@@ -1,0 +1,7 @@
+module.exports = () => {
+
+ //   client.on('ready', () =>{
+        console.log('We are Online!');
+       // client.user.setActivity('my code break', { type: 'WATCHING'}).catch(console.error)
+   // })
+}
