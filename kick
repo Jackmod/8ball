@@ -1,0 +1,17 @@
+module.exports = {
+    name: 'kick',
+    aliases: ['k'],
+    description: 'this is a kick command!',
+    execute(message, args, cmd, client, Discord){
+        if(!message.member.roles.cache.some(r=>["Founder"].includes(r.name))) return message.channel.send("You dont have the permissions to use this command!").then(msg => msg.delete({timeout: 3000}))
+
+        const member = message.mentions.members.first();
+        if(member){
+            const memberTarger = message.guild.members.cache.get(member.id);
+            memberTarger.kick();
+            message.channel.send("User has been kicked!")
+        }else{
+            message.channel.send('You couldnt kick that member!').then(msg => msg.delete({timeout: 3000}))
+        }
+    }
+}
