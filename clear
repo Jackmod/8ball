@@ -1,0 +1,19 @@
+module.exports = {
+    name: 'clear',
+    aliases: ['cl'],
+    async  execute(message, args, cmd, client, Discord){
+        if(!message.member.roles.cache.some(r=>["Admin"].includes(r.name))) return message.channel.send("You dont have the permissions to use this command!").then(msg => msg.delete({timeout: 3000}))
+
+        if(!args[0]) return message.reply("Please enter a number! \n`M! clear 10`").then(msg => msg.delete({timeout: 3000}))
+        if(isNaN(args[0])) return message.reply("Please enter a valid number! \n`M! clear 10`").then(msg => msg.delete({timeout: 3000}))
+
+        if(args[0] > 100) return message.reply("You can only delete a maximum of 100 messages at a time!").then(msg => msg.delete({timeout: 3000}))
+        if(args[0] < 1) return message.reply("You have to delete *at least* 1 message!").then(msg => msg.delete({timeout: 3000}))
+
+        await message.channel.messages.fetch({limit: args[0]}).then(msgs => {
+            message.channel.bulkDelete(msgs)
+        })
+        message.channel.send(`${args[0]} messages cleared!`).then(msg => msg.delete({timeout: 3000}))
+    }
+        
+}
