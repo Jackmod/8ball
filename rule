@@ -1,0 +1,27 @@
+module.exports = {
+    name: 'rule',
+    description: "This embed a member",
+    execute(client, message, args, Discord) {
+        const newEmbed = new Discord.MessageEmbed()
+        .setColor('#ff0000')
+        .setTitle('**Marginal Esports Guidelines**')
+        .setURL('https://solo.to/marginal')
+        .setDescription('')
+        .addFields(
+            {name: ' **- Be Respectful**', value: 'Always be respectful to other members, this includes not sharing NSFW material, being racist, spreading false rumours, etc…'},
+            {name: '**- Do not share personal information**', value: 'Private and/or sensitive information about yourself (age, location, passwords, etc.) or others is to be kept private.'},
+            {name: '**- Dont ping people excessively**', value: 'Do not ping a staff or a member for no reason, do not mass ping a large group of members.'},
+            {name: '**- Use the correct channels**', value: '**Talk, share, play, etc in the correct channels so that u dont disturb other members.**'},
+            {name: '**- Dont spam**', value: 'Spamming interrupts conversations and fills the chat which is annoying for members.'},
+            {name: '**- No Swearing**', value: 'Swearing is not allowed in this server, thank you for keeping this community a positive environment for everyone.'},
+            {name: '**- No role-play**', value: 'Role-play is not allowed in this server as it can be annoying and uncomfortable for other members.'},
+            {name: '**- No Promotion**', value: 'You can only promote in promotion channels, no where else.'},
+            {name: '**- Listen to staff**', value: 'If a staff tells you to do something, do it as it is to benefit the server and not to make you annoyed, uncomfortable, scared, etc without a good reason.'},
+        )
+        .setImage('https://media.discordapp.net/attachments/860780688302014484/862065340367110144/image0.jpg?width=1921&height=640')
+        .setFooter('Make sure to check out the rule channel!');
+    
+        message.channel.send(newEmbed);
+    }
+    
+}
