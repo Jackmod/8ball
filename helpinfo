@@ -1,0 +1,57 @@
+const pagination = require('discord.js-pagination')
+const Discord = require('discord.js')
+
+module.exports = {
+    name: 'helpinfo',
+     description: 'this is a help command!',
+     execute(message, args, cmd, client, Discord) {
+
+        const botinfo = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setTitle('Bot information')
+        .addField('**Prefix**', 'Bot prefix is `M!` ')
+        .addField('**Pages**', '`1. Bot imformation`, `2. information`, `3. Fun`, `4. Staff Commands`')
+        .addField('Bot Developer', '`난jack찮 ᵈᵉᵛ#0001` ')
+        .addField('Navagation Help', '`Use the arrows below to look through the pages!` ')
+        .setAuthor(' Commnand List', message.author.displayAvatarURL())
+
+        const information = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setTitle('Information')
+        .addField('`ping`', 'Show the bot ping')
+        .addField('`avatar`', 'Show your profile picture')
+        .addField('`Grinder`', 'Gives you the grinder role!')
+        .addField('`play`', 'Play `name of the song`')
+        .addField('`leave`', 'Leave VCs')
+        .addField('`image`', 'Name the image you want it to get on google!')
+        .addField('`Ticket`', 'ModMail')
+
+        const fun = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setTitle('Fun')
+        .addField('`8ball`', 'Ask it a question and it will respond.......')
+        .addField('`Meme`', 'Send a meme')
+        .addField('`Howgay`', 'Guest how gay someone is! LOL')
+        .addField('`RPS`', 'Rock, Paper, scissors')
+        .addField('`TTT`', 'Tick Tac Toe')
+
+        const mod = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setTitle('Staff commands')
+        .addField('`kick`', 'kick a member')
+        .addField('`ban`', 'ban a member')
+        .addField('`mute`', 'mute a member')
+
+        
+        const pages = [
+            botinfo,
+            information,
+            fun,
+            mod,
+        ]
+
+        const emojisList = ["⏪", "⏩"]
+
+        pagination(message, pages, emojisList)
+     }
+}
