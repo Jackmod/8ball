@@ -1,0 +1,34 @@
+const Discord = require('discord.js')
+
+module.exports = {
+    name: 'help',
+    description: 'this is a help command!',
+    execute(message, args, cmd, client, Discord) {
+
+        const help = new Discord.MessageEmbed()
+        .setColor("RANDOM")
+        .setTitle('Prefix - `M!`')
+        .setAuthor(' Commnand List', message.author.displayAvatarURL())
+
+        .addFields({
+            name: 'About this bot',
+            value: 'This is a bot for Marginal Esports',
+        },
+        {
+            name: '**infomation**',
+            value: '`ping` | `Grinder` | `image` |  `play` | `leave` `more command to come!`',
+        },
+        {
+            name: '**Fun**',
+            value: '`meme` `8ball` `more command to come!`',
+        
+        },
+        {
+            name: '**Bot Developer**',
+            value: '`난jack찮 ᵈᵉᵛ#0001`'
+        },)
+
+        message.channel.send(help)
+
+    }
+}
